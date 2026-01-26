@@ -1,0 +1,6 @@
+local_env.source
+vendor
+
+#/bin/
+list-apps.json
+key
