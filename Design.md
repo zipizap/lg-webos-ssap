@@ -2,7 +2,7 @@ golang program that connects to IP:PORT of a LG TV with webOs running SSAP proto
 It should allow the user (via command-line args and flags) to call the most used SSAP capabilities, including: 
 
 - Volume control: get and change
-- Channel control: get and change
+- Channel control: get and change up/down or to a specific channel
 - Get TV info (version, model, etc)
 - App control: list, launch or close an app (by name or id)
 - Show toast message

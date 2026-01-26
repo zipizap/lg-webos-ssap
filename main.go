@@ -30,7 +30,7 @@ type Message struct {
 var (
 	addr        = flag.String("addr", "192.168.1.237:3000", "TV address")
 	keyFile     = flag.String("key-file", "key", "Path to file containing Client Key")
-	cmd         = flag.String("cmd", "", "Command: initialize-key, info, list-apps, launch, close, vol-get, vol-set, vol-up, vol-down, mute, un-mute, chan-get, chan-up, chan-down, toast, turn-off, list-inputs, set-input, play, pause, stop, rewind, fast-forward")
+	cmd         = flag.String("cmd", "", "Command: initialize-key, info, list-apps, launch, close, vol-get, vol-set, vol-up, vol-down, mute, un-mute, chan-get, chan-up, chan-down, chan-set, list-channels, toast, turn-off, list-inputs, set-input, play, pause, stop, rewind, fast-forward")
 	arg         = flag.String("arg", "", "Argument for command")
 	payload     = flag.String("payload", "", "Optional JSON payload for launch command")
 	socks5Proxy = flag.String("use-socks5-proxy", "", "SOCKS5 proxy address (e.g., 127.0.0.1:1080)")
@@ -59,6 +59,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, "  chan-get:       -cmd chan-get")
 		fmt.Fprintln(os.Stderr, "  chan-up:        -cmd chan-up")
 		fmt.Fprintln(os.Stderr, "  chan-down:      -cmd chan-down")
+		fmt.Fprintln(os.Stderr, "  chan-set:       -cmd chan-set -arg <ChannelID>")
+		fmt.Fprintln(os.Stderr, "  list-channels:  -cmd list-channels")
 		fmt.Fprintln(os.Stderr, "  toast:          -cmd toast -arg \"Hello World\"")
 		fmt.Fprintln(os.Stderr, "  turn-off:       -cmd turn-off")
 		fmt.Fprintln(os.Stderr, "  list-inputs:    -cmd list-inputs")
@@ -255,6 +257,13 @@ func executeCommand(c *websocket.Conn, command string, argument string, reqConte
 		sendRequest(c, "ssap://tv/channelUp", nil, "req_chan_up")
 	case "chan-down":
 		sendRequest(c, "ssap://tv/channelDown", nil, "req_chan_down")
+	case "chan-set":
+		if argument == "" {
+			log.Fatal("Channel ID argument required")
+		}
+		sendRequest(c, "ssap://tv/openChannel", map[string]interface{}{"channelId": argument}, "req_chan_set")
+	case "list-channels":
+		sendRequest(c, "ssap://tv/getChannelList", nil, "req_list_channels")
 	case "list-apps":
 		sendRequest(c, "ssap://com.webos.applicationManager/listApps", nil, "req_list_apps")
 	case "launch", "close":

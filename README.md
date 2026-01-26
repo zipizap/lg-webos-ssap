@@ -20,7 +20,7 @@ go build -o lg-webos-ssap main.go
 |------|---------|-------------|
 | `-addr` | `192.168.1.237:3000` | TV IP address and port |
 | `-key-file` | `key` | Path to file containing the pairing key |
-| `-cmd` | `info` | Command to execute (see below) |
+| `-cmd` | `(required)` | Command to execute (see below) |
 | `-arg` | `""` | Argument for commands that require one |
 | `-payload` | `""` | Optional JSON payload for `launch` command |
 | `-use-socks5-proxy` | `""` | SOCKS5 proxy address (e.g. `127.0.0.1:1080`) |
@@ -44,6 +44,8 @@ go build -o lg-webos-ssap main.go
 | **Channel** | `chan-get` | - | Get current channel info. |
 | | `chan-up` | - | Channel up. |
 | | `chan-down` | - | Channel down. |
+| | `chan-set` | Channel ID | Switch to specific channel. |
+| | `list-channels` | - | List available channels. |
 | **Inputs** | `list-inputs` | - | List external inputs. |
 | | `set-input` | Input ID | Switch input (e.g. HDMI_1). |
 | **Media** | `play` | - | Play media. |
