@@ -104,7 +104,16 @@ func main() {
 
 	c, _, err := dialer.Dial(u.String(), nil)
 	if err != nil {
-		log.Fatal("dial:", err)
+		if *socks5Proxy != "" {
+			log.Printf("Dial with proxy failed: %v. Retrying...", err)
+			time.Sleep(1 * time.Second)
+			c, _, err = dialer.Dial(u.String(), nil)
+			if err != nil {
+				log.Fatal("dial retry failed:", err)
+			}
+		} else {
+			log.Fatal("dial:", err)
+		}
 	}
 	defer c.Close()
 
