@@ -16,4 +16,4 @@ set -o xtrace
 SOCKS5_PROXY="192.168.255.5:1080"
 
 cd "$__dir"/..
-./lg-webos-ssap -use-socks5-proxy "$SOCKS5_PROXY" -cmd chan-set -arg "1_25_7_0_16_190_8916"
+./lg-webos-ssap -use-socks5-proxy "$SOCKS5_PROXY" -cmd chan-set -arg "1_34_24_0_15_149_8916"
