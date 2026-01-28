@@ -16,4 +16,4 @@ set -o xtrace
 SOCKS5_PROXY="192.168.255.5:1080"
 
 cd "$__dir"/..
-./lg-webos-ssap -use-socks5-proxy "$SOCKS5_PROXY" -cmd toast -arg "${1?Usage : $0 <message>}"
+./lg-webos-ssap -use-socks5-proxy "$SOCKS5_PROXY" -cmd toast -arg "${1?Usage : $0 <120char_singleLine_message>}"
