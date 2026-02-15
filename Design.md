@@ -8,7 +8,7 @@ It should allow the user (via command-line args and flags) to call the most used
 - Show toast message
 - and all others possible commands the user might find relevant allowed by the SSAP protocol
 
-Also add a special option `-cmd initialize-key` that will make a request to the tv with all possible the permissions and store the returned key in a local file for future use. This is intended to be run once to get the key, that latter can be used with any command without needing to re-authorize.
+Also add a special option `-cmd initialize-key` that will make a request to the tv with all possible the permissions and store the returned key in a local file (`~/.lg-webos-ssap.key`)for future use. This is intended to be run once to get the key, that latter can be used with any command without needing to re-authorize.
 
 The `-cmd launch -arg youtube` should accept an additional optional argument to specify a string with json-payload to send to the app.
 

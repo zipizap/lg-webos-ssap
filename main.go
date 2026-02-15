@@ -29,7 +29,7 @@ type Message struct {
 
 var (
 	addr        = flag.String("addr", "192.168.1.237:3000", "TV address")
-	keyFile     = flag.String("key-file", "key", "Path to file containing Client Key")
+	keyFile     = flag.String("key-file", os.Getenv("HOME")+"/.lg-webos-ssap.key", "Path to file containing Client Key")
 	cmd         = flag.String("cmd", "", "Command: initialize-key, info, list-apps, launch, close, vol-get, vol-set, vol-up, vol-down, mute, un-mute, chan-get, chan-up, chan-down, chan-set, list-channels, toast, turn-off, list-inputs, set-input, play, pause, stop, rewind, fast-forward")
 	arg         = flag.String("arg", "", "Argument for command")
 	payload     = flag.String("payload", "", "Optional JSON payload for launch command")

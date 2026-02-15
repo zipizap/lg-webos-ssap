@@ -19,7 +19,7 @@ go build -o lg-webos-ssap main.go
 | Flag | Default | Description |
 |------|---------|-------------|
 | `-addr` | `192.168.1.237:3000` | TV IP address and port |
-| `-key-file` | `key` | Path to file containing the pairing key |
+| `-key-file` | `key` | Path to file containing the pairing key (default `~/.lg-webos-ssap.key`) |
 | `-cmd` | `(required)` | Command to execute (see below) |
 | `-arg` | `""` | Argument for commands that require one |
 | `-payload` | `""` | Optional JSON payload for `launch` command |
